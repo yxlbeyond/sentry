@@ -44,7 +44,10 @@ ROOT = os.path.realpath(os.path.join(os.path.dirname(
 sys.path.insert(0, os.path.join(ROOT, 'src'))
 
 from sentry.utils.distutils import (
-    BuildAssetsCommand, BuildIntegrationDocsCommand, BuildJsSdkRegistryCommand
+    BuildAssetsCommand,
+    BuildIntegrationDocsCommand,
+    BuildJsSdkRegistryCommand,
+    SyncWithReleaseRegistryCommand
 )
 
 # The version of sentry
@@ -90,9 +93,12 @@ class SentrySDistCommand(SDistCommand):
     # part of our source build pipeline.
     if not IS_LIGHT_BUILD:
         sub_commands = SDistCommand.sub_commands + \
-            [('build_integration_docs', None),
-             ('build_assets', None),
-             ('build_js_sdk_registry', None)]
+            [
+                ('build_integration_docs', None),
+                ('build_assets', None),
+                ('build_js_sdk_registry', None),
+                ('sync_with_release_registry', None),
+            ]
 
 
 class SentryBuildCommand(BuildCommand):
@@ -102,6 +108,7 @@ class SentryBuildCommand(BuildCommand):
             self.run_command('build_integration_docs')
             self.run_command('build_assets')
             self.run_command('build_js_sdk_registry')
+            self.run_command('sync_with_release_registry')
 
 
 class SentryDevelopCommand(DevelopCommand):
@@ -111,6 +118,7 @@ class SentryDevelopCommand(DevelopCommand):
             self.run_command('build_integration_docs')
             self.run_command('build_assets')
             self.run_command('build_js_sdk_registry')
+            self.run_command('sync_with_release_registry')
 
 
 cmdclass = {
@@ -120,6 +128,7 @@ cmdclass = {
     'build_assets': BuildAssetsCommand,
     'build_integration_docs': BuildIntegrationDocsCommand,
     'build_js_sdk_registry': BuildJsSdkRegistryCommand,
+    'sync_with_release_registry': SyncWithReleaseRegistryCommand,
 }
 
 

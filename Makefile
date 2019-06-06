@@ -114,6 +114,7 @@ build-platform-assets:
 fetch-release-registry:
 	@echo "--> Fetching release registry"
 	@echo "from sentry.utils.distutils import sync_registry; sync_registry()" | sentry exec
+	@echo "from sentry.utils.distutils import sync_with_release_registry; sync_with_release_registry()" | sentry exec
 
 test-cli:
 	@echo "--> Testing CLI"
