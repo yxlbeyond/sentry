@@ -255,7 +255,7 @@ const appConfig = {
         use: [ExtractTextPlugin.loader, 'css-loader', 'less-loader'],
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg|png|gif|ico|jpg)($|\?)/,
+        test: /\.(woff|woff2|ttf|eot|svg|png|gif|ico|jpg|mp4)($|\?)/,
         exclude: /app\/icons\/.*\.svg$/,
         use: [
           {

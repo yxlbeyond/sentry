@@ -10,7 +10,7 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {
     '^app-test/(.*)': '<rootDir>/tests/js/$1',
-    '\\.(css|less|png)$': '<rootDir>/tests/js/helpers/importStyleMock.js',
+    '\\.(css|less|png|mp4)$': '<rootDir>/tests/js/helpers/importStyleMock.js',
     '\\.(svg)$': '<rootDir>/tests/js/helpers/svgMock.js',
     'integration-docs-platforms':
       '<rootDir>/tests/fixtures/integration-docs/_platforms.json',
