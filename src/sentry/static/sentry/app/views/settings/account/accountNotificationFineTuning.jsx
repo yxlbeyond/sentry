@@ -142,6 +142,7 @@ class AccountNotificationsByProject extends React.Component {
             return (
               <PanelBodyLineItem key={field.name}>
                 <SelectField
+                  deprecatedSelectControl
                   defaultValue={field.defaultValue}
                   name={field.name}
                   choices={field.choices}
@@ -188,6 +189,7 @@ class AccountNotificationsByOrganization extends React.Component {
           return (
             <PanelBodyLineItem key={field.name}>
               <SelectField
+                deprecatedSelectControl
                 defaultValue={field.defaultValue}
                 name={field.name}
                 choices={field.choices}

@@ -63,6 +63,7 @@ export default class CustomIgnoreCountModal extends React.Component {
             <div className="control-group m-b-1">
               <h6 className="nav-header">{t('Time window')}</h6>
               <SelectField
+                deprecatedSelectControl
                 value={window}
                 name="window"
                 onChange={v => this.onChange('window', v)}

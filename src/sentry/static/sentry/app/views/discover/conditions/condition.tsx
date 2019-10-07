@@ -1,5 +1,5 @@
 import React from 'react';
-import {Value} from 'react-select';
+import {Value} from 'react-select-legacy';
 import styled from 'react-emotion';
 import {t} from 'app/locale';
 import space from 'app/styles/space';
@@ -213,6 +213,7 @@ export default class ConditionRow extends React.Component<
     return (
       <Box>
         <SelectControl
+          deprecatedSelectControl
           innerRef={(ref: any) => (this.select = ref)}
           value={getInternal(this.props.value)}
           placeholder={<PlaceholderText>{t('Add condition...')}</PlaceholderText>}

@@ -76,6 +76,7 @@ class TriggersChart extends React.Component<Props, State> {
           <SelectProjectWrapper>
             Select Project to see last 24 hours of data
             <SelectControl
+              deprecatedSelectControl
               options={projectOptions}
               onChange={this.handleSelectProjects}
             />

@@ -245,6 +245,7 @@ export default class IncidentRulesChart extends React.Component<Props, State> {
     return (
       <Wrapper>
         <CornerProjectSelect
+          deprecatedSelectControl
           value={selectedProjects.length && selectedProjects[0]}
           options={projectOptions}
           onChange={onChangeProjects}

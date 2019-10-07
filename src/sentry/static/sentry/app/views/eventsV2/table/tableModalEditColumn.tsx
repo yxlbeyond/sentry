@@ -119,6 +119,7 @@ class TableModalEditColumnBodyForm extends React.Component<
           <FormRow>
             <FormRowItemLeft>
               <SelectField
+                deprecatedSelectControl
                 name="aggregation"
                 label={t('Select')}
                 placeholder="Aggregate"
@@ -128,6 +129,7 @@ class TableModalEditColumnBodyForm extends React.Component<
             </FormRowItemLeft>
             <FormRowItemRight>
               <SelectField
+                deprecatedSelectControl
                 required
                 name="field"
                 label={t('Column')}

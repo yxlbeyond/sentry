@@ -103,6 +103,7 @@ export default class SelectField extends FormField {
 
   getField() {
     const {
+      deprecatedSelectControl,
       options,
       clearable,
       creatable,
@@ -115,6 +116,7 @@ export default class SelectField extends FormField {
 
     return (
       <StyledSelectControl
+        deprecatedSelectControl={deprecatedSelectControl}
         creatable={creatable}
         id={this.getId()}
         choices={choices}

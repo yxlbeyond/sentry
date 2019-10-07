@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectField renders with flat choices 1`] = `
+exports[`SelectField deprecatedSelectControl renders with flat choices 1`] = `
 <div
   className=""
 >
@@ -16,8 +16,8 @@ exports[`SelectField renders with flat choices 1`] = `
         ]
       }
       clearable={true}
+      deprecatedSelectControl={true}
       disabled={false}
-      height={36}
       id="id-fieldName"
       multiple={false}
       name="fieldName"
@@ -29,7 +29,7 @@ exports[`SelectField renders with flat choices 1`] = `
 </div>
 `;
 
-exports[`SelectField renders with paired choices 1`] = `
+exports[`SelectField deprecatedSelectControl renders with paired choices 1`] = `
 <div
   className=""
 >
@@ -54,8 +54,8 @@ exports[`SelectField renders with paired choices 1`] = `
         ]
       }
       clearable={true}
+      deprecatedSelectControl={true}
       disabled={false}
-      height={36}
       id="id-fieldName"
       multiple={false}
       name="fieldName"
@@ -67,9 +67,10 @@ exports[`SelectField renders with paired choices 1`] = `
 </div>
 `;
 
-exports[`SelectField renders without form context 1`] = `
+exports[`SelectField deprecatedSelectControl renders without form context 1`] = `
 <SelectField
   clearable={true}
+  deprecatedSelectControl={true}
   disabled={false}
   hideErrorMessage={false}
   multiple={false}
@@ -97,8 +98,8 @@ exports[`SelectField renders without form context 1`] = `
     >
       <StyledSelectControl
         clearable={true}
+        deprecatedSelectControl={true}
         disabled={false}
-        height={36}
         id="id-fieldName"
         multiple={false}
         name="fieldName"
@@ -121,8 +122,8 @@ exports[`SelectField renders without form context 1`] = `
         <SelectControl
           className="css-gr8jfe-StyledSelectControl e1qrhqd00"
           clearable={true}
+          deprecatedSelectControl={true}
           disabled={false}
-          height={36}
           id="id-fieldName"
           multiple={false}
           name="fieldName"
@@ -142,12 +143,9 @@ exports[`SelectField renders without form context 1`] = `
           required={false}
           value="a"
         >
-          <StyledSelect
-            arrowRenderer={[Function]}
-            backspaceRemoves={true}
+          <SelectControlLegacy
             className="css-gr8jfe-StyledSelectControl e1qrhqd00"
             clearable={true}
-            deleteRemoves={true}
             disabled={false}
             height={36}
             id="id-fieldName"
@@ -169,10 +167,10 @@ exports[`SelectField renders without form context 1`] = `
             required={false}
             value="a"
           >
-            <ForwardRef(SelectPicker)
+            <StyledSelect
               arrowRenderer={[Function]}
               backspaceRemoves={true}
-              className="e1qrhqd00 css-tbbzhr-StyledSelect-StyledSelectControl eho28m20"
+              className="css-gr8jfe-StyledSelectControl e1qrhqd00"
               clearable={true}
               deleteRemoves={true}
               disabled={false}
@@ -196,14 +194,13 @@ exports[`SelectField renders without form context 1`] = `
               required={false}
               value="a"
             >
-              <SelectPicker
+              <ForwardRef(SelectPicker)
                 arrowRenderer={[Function]}
                 backspaceRemoves={true}
-                className="e1qrhqd00 css-tbbzhr-StyledSelect-StyledSelectControl eho28m20"
+                className="e1qrhqd00 css-45f7t8-StyledSelect-StyledSelectControl e1ynsgsr0"
                 clearable={true}
                 deleteRemoves={true}
                 disabled={false}
-                forwardedRef={null}
                 height={36}
                 id="id-fieldName"
                 multiple={false}
@@ -224,44 +221,19 @@ exports[`SelectField renders without form context 1`] = `
                 required={false}
                 value="a"
               >
-                <Select
+                <SelectPicker
                   arrowRenderer={[Function]}
-                  autosize={true}
                   backspaceRemoves={true}
-                  backspaceToRemoveMessage="Press backspace to remove {label}"
-                  className="e1qrhqd00 css-tbbzhr-StyledSelect-StyledSelectControl eho28m20"
-                  clearAllText="Clear all"
-                  clearRenderer={[Function]}
-                  clearValueText="Clear value"
+                  className="e1qrhqd00 css-45f7t8-StyledSelect-StyledSelectControl e1ynsgsr0"
                   clearable={true}
-                  closeOnSelect={true}
                   deleteRemoves={true}
-                  delimiter=","
                   disabled={false}
-                  escapeClearsValue={true}
-                  filterOptions={[Function]}
+                  forwardedRef={null}
                   height={36}
                   id="id-fieldName"
-                  ignoreAccents={true}
-                  ignoreCase={true}
-                  inputProps={Object {}}
-                  isLoading={false}
-                  joinValues={false}
-                  labelKey="label"
-                  matchPos="any"
-                  matchProp="any"
-                  menuBuffer={0}
-                  menuRenderer={[Function]}
-                  multi={false}
                   multiple={false}
                   name="fieldName"
-                  noResultsText="No results found"
-                  onBlurResetsInput={true}
                   onChange={[Function]}
-                  onCloseResetsInput={true}
-                  onSelectResetsInput={true}
-                  openOnClick={true}
-                  optionComponent={[Function]}
                   options={
                     Array [
                       Object {
@@ -274,159 +246,213 @@ exports[`SelectField renders without form context 1`] = `
                       },
                     ]
                   }
-                  pageSize={5}
-                  placeholder="Select..."
-                  removeSelected={true}
                   required={false}
-                  rtl={false}
-                  scrollMenuIntoView={true}
-                  searchable={true}
-                  simpleValue={false}
-                  tabSelectsValue={true}
-                  trimFilter={true}
                   value="a"
-                  valueComponent={[Function]}
-                  valueKey="value"
                 >
-                  <div
-                    className="Select e1qrhqd00 css-tbbzhr-StyledSelect-StyledSelectControl eho28m20 has-value is-clearable is-searchable Select--single"
+                  <Select
+                    arrowRenderer={[Function]}
+                    autosize={true}
+                    backspaceRemoves={true}
+                    backspaceToRemoveMessage="Press backspace to remove {label}"
+                    className="e1qrhqd00 css-45f7t8-StyledSelect-StyledSelectControl e1ynsgsr0"
+                    clearAllText="Clear all"
+                    clearRenderer={[Function]}
+                    clearValueText="Clear value"
+                    clearable={true}
+                    closeOnSelect={true}
+                    deleteRemoves={true}
+                    delimiter=","
+                    disabled={false}
+                    escapeClearsValue={true}
+                    filterOptions={[Function]}
+                    height={36}
+                    id="id-fieldName"
+                    ignoreAccents={true}
+                    ignoreCase={true}
+                    inputProps={Object {}}
+                    isLoading={false}
+                    joinValues={false}
+                    labelKey="label"
+                    matchPos="any"
+                    matchProp="any"
+                    menuBuffer={0}
+                    menuRenderer={[Function]}
+                    multi={false}
+                    multiple={false}
+                    name="fieldName"
+                    noResultsText="No results found"
+                    onBlurResetsInput={true}
+                    onChange={[Function]}
+                    onCloseResetsInput={true}
+                    onSelectResetsInput={true}
+                    openOnClick={true}
+                    optionComponent={[Function]}
+                    options={
+                      Array [
+                        Object {
+                          "label": "a",
+                          "value": "a",
+                        },
+                        Object {
+                          "label": "b",
+                          "value": "b",
+                        },
+                      ]
+                    }
+                    pageSize={5}
+                    placeholder="Select..."
+                    removeSelected={true}
+                    required={false}
+                    rtl={false}
+                    scrollMenuIntoView={true}
+                    searchable={true}
+                    simpleValue={false}
+                    tabSelectsValue={true}
+                    trimFilter={true}
+                    value="a"
+                    valueComponent={[Function]}
+                    valueKey="value"
                   >
-                    <input
-                      disabled={false}
-                      key="hidden.0"
-                      name="fieldName"
-                      type="hidden"
-                      value="a"
-                    />
                     <div
-                      className="Select-control"
-                      onKeyDown={[Function]}
-                      onMouseDown={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
+                      className="Select e1qrhqd00 css-45f7t8-StyledSelect-StyledSelectControl e1ynsgsr0 has-value is-clearable is-searchable Select--single"
                     >
-                      <span
-                        className="Select-multi-value-wrapper"
-                        id="react-select-2--value"
-                      >
-                        <Value
-                          disabled={false}
-                          id="react-select-2--value-item"
-                          instancePrefix="react-select-2-"
-                          onClick={null}
-                          placeholder="Select..."
-                          value={
-                            Object {
-                              "label": "a",
-                              "value": "a",
-                            }
-                          }
-                        >
-                          <div
-                            className="Select-value"
-                          >
-                            <span
-                              aria-selected="true"
-                              className="Select-value-label"
-                              id="react-select-2--value-item"
-                              role="option"
-                            >
-                              a
-                            </span>
-                          </div>
-                        </Value>
-                        <AutosizeInput
-                          aria-activedescendant="react-select-2--value"
-                          aria-expanded="false"
-                          aria-haspopup="false"
-                          aria-owns=""
-                          className="Select-input"
-                          id="id-fieldName"
-                          injectStyles={true}
-                          minWidth="5"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          required={false}
-                          role="combobox"
-                          value=""
-                        >
-                          <div
-                            className="Select-input"
-                            style={
-                              Object {
-                                "display": "inline-block",
-                              }
-                            }
-                          >
-                            <input
-                              aria-activedescendant="react-select-2--value"
-                              aria-expanded="false"
-                              aria-haspopup="false"
-                              aria-owns=""
-                              id="id-fieldName"
-                              onBlur={[Function]}
-                              onChange={[Function]}
-                              onFocus={[Function]}
-                              required={false}
-                              role="combobox"
-                              style={
-                                Object {
-                                  "boxSizing": "content-box",
-                                  "width": "5px",
-                                }
-                              }
-                              value=""
-                            />
-                            <div
-                              style={
-                                Object {
-                                  "height": 0,
-                                  "left": 0,
-                                  "overflow": "scroll",
-                                  "position": "absolute",
-                                  "top": 0,
-                                  "visibility": "hidden",
-                                  "whiteSpace": "pre",
-                                }
-                              }
-                            />
-                          </div>
-                        </AutosizeInput>
-                      </span>
-                      <span
-                        aria-label="Clear value"
-                        className="Select-clear-zone"
+                      <input
+                        disabled={false}
+                        key="hidden.0"
+                        name="fieldName"
+                        type="hidden"
+                        value="a"
+                      />
+                      <div
+                        className="Select-control"
+                        onKeyDown={[Function]}
                         onMouseDown={[Function]}
                         onTouchEnd={[Function]}
                         onTouchMove={[Function]}
                         onTouchStart={[Function]}
-                        title="Clear value"
                       >
-                        <span
-                          className="Select-clear"
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "&times;",
+                        <div
+                          className="Select-multi-value-wrapper"
+                          id="react-select-2--value"
+                        >
+                          <Value
+                            disabled={false}
+                            id="react-select-2--value-item"
+                            instancePrefix="react-select-2-"
+                            onClick={null}
+                            placeholder="Select..."
+                            value={
+                              Object {
+                                "label": "a",
+                                "value": "a",
+                              }
                             }
-                          }
-                        />
-                      </span>
-                      <span
-                        className="Select-arrow-zone"
-                        onMouseDown={[Function]}
-                      >
+                          >
+                            <div
+                              className="Select-value"
+                            >
+                              <span
+                                aria-selected="true"
+                                className="Select-value-label"
+                                id="react-select-2--value-item"
+                                role="option"
+                              >
+                                a
+                              </span>
+                            </div>
+                          </Value>
+                          <AutosizeInput
+                            aria-activedescendant="react-select-2--value"
+                            aria-expanded="false"
+                            aria-haspopup="false"
+                            aria-owns=""
+                            className="Select-input"
+                            id="id-fieldName"
+                            injectStyles={true}
+                            minWidth="5"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            required={false}
+                            role="combobox"
+                            value=""
+                          >
+                            <div
+                              className="Select-input"
+                              style={
+                                Object {
+                                  "display": "inline-block",
+                                }
+                              }
+                            >
+                              <input
+                                aria-activedescendant="react-select-2--value"
+                                aria-expanded="false"
+                                aria-haspopup="false"
+                                aria-owns=""
+                                id="id-fieldName"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                required={false}
+                                role="combobox"
+                                style={
+                                  Object {
+                                    "boxSizing": "content-box",
+                                    "width": "5px",
+                                  }
+                                }
+                                value=""
+                              />
+                              <div
+                                style={
+                                  Object {
+                                    "height": 0,
+                                    "left": 0,
+                                    "overflow": "scroll",
+                                    "position": "absolute",
+                                    "top": 0,
+                                    "visibility": "hidden",
+                                    "whiteSpace": "pre",
+                                  }
+                                }
+                              />
+                            </div>
+                          </AutosizeInput>
+                        </div>
                         <span
-                          className="icon-arrow-down"
-                        />
-                      </span>
+                          aria-label="Clear value"
+                          className="Select-clear-zone"
+                          onMouseDown={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          title="Clear value"
+                        >
+                          <span
+                            className="Select-clear"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "&times;",
+                              }
+                            }
+                          />
+                        </span>
+                        <span
+                          className="Select-arrow-zone"
+                          onMouseDown={[Function]}
+                        >
+                          <span
+                            className="icon-arrow-down"
+                          />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Select>
-              </SelectPicker>
-            </ForwardRef(SelectPicker)>
-          </StyledSelect>
+                  </Select>
+                </SelectPicker>
+              </ForwardRef(SelectPicker)>
+            </StyledSelect>
+          </SelectControlLegacy>
         </SelectControl>
       </StyledSelectControl>
     </div>
