@@ -29,7 +29,7 @@ const formGroups = [
         label: t('IP Addresses'),
         help: (
           <React.Fragment>
-            {t('Filter events from these IP addresses. ')}
+            {t('Filter events from these IP addresses (works on REMOTE_ADDR header values). ')}
             {newLineHelpText}
           </React.Fragment>
         ),
