@@ -14,7 +14,8 @@ PIP_OPTS := --no-use-pep517 --disable-pip-version-check
 WEBPACK := NODE_ENV=production ./bin/yarn webpack
 YARN := ./bin/yarn
 
-bootstrap: develop
+bootstrap:
+	@./scripts/ensure-venv.sh
 	sentry init --dev
 	sentry devservices up
 	make reset-db
