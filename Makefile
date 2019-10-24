@@ -26,7 +26,8 @@ develop:
 	make install-yarn-pkgs
 	make install-sentry-dev
 
-test: develop lint test-js test-python test-cli
+test:
+	@echo "This is deprecated. Please use the more specific test-js, test-python, or test-cli."
 
 build: locale
 
