@@ -41,11 +41,10 @@ create-db:
 	docker exec $$(docker ps --filter 'name=sentry_postgres' --format '{{.ID}}') \
 		createdb -U postgres -E utf-8 sentry || true
 
-apply-migrations:
-	@echo "--> Applying migrations"
+reset-db:
+	make drop-db
+	make create-db
 	sentry upgrade
-
-reset-db: drop-db create-db apply-migrations
 
 clean:
 	@echo "--> Cleaning static cache"
