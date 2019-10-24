@@ -14,7 +14,7 @@ PIP_OPTS := --no-use-pep517 --disable-pip-version-check
 WEBPACK := NODE_ENV=production ./bin/yarn webpack
 YARN := ./bin/yarn
 
-bootstrap: install-system-pkgs develop init-config run-dependent-services create-db apply-migrations
+bootstrap: develop init-config run-dependent-services create-db apply-migrations
 
 develop: ensure-venv setup-git install-yarn-pkgs install-sentry-dev
 
@@ -72,10 +72,6 @@ setup-git: ensure-latest-pip
 
 node-version-check:
 	@test "$$(node -v)" = v"$$(cat .nvmrc)" || (echo 'node version does not match .nvmrc. Recommended to use https://github.com/creationix/nvm'; exit 1)
-
-install-system-pkgs: node-version-check
-	@echo "--> Installing system packages (from Brewfile)"
-	@command -v brew 2>&1 > /dev/null && brew bundle || (echo 'WARNING: homebrew not found or brew bundle failed - skipping system dependencies.')
 
 install-yarn-pkgs:
 	@echo "--> Installing Yarn packages (for development)"
@@ -204,7 +200,7 @@ publish:
 	python setup.py sdist bdist_wheel upload
 
 
-.PHONY: develop test build test reset-db clean setup-git node-version-check install-system-pkgs install-yarn-pkgs install-sentry-dev build-js-po locale update-transifex build-platform-assets test-cli test-js test-styleguide test-python test-snuba test-symbolicator test-acceptance lint lint-python lint-js publish
+.PHONY: develop test build test reset-db clean setup-git node-version-check install-yarn-pkgs install-sentry-dev build-js-po locale update-transifex build-platform-assets test-cli test-js test-styleguide test-python test-snuba test-symbolicator test-acceptance lint lint-python lint-js publish
 
 
 ############################
