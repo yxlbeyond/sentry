@@ -14,15 +14,16 @@ PIP_OPTS := --no-use-pep517 --disable-pip-version-check
 WEBPACK := NODE_ENV=production ./bin/yarn webpack
 YARN := ./bin/yarn
 
-bootstrap: develop init-config run-dependent-services create-db apply-migrations
-
-develop: ensure-venv setup-git install-yarn-pkgs install-sentry-dev
-
-init-config:
+bootstrap: develop
 	sentry init --dev
-
-run-dependent-services:
 	sentry devservices up
+	make reset-db
+
+develop:
+	@./scripts/ensure-venv.sh
+	make setup-git
+	make install-yarn-pkgs
+	make install-sentry-dev
 
 test: develop lint test-js test-python test-cli
 
@@ -54,9 +55,6 @@ clean:
 	@echo "--> Cleaning python build artifacts"
 	rm -rf build/ dist/ src/sentry/assets.json
 	@echo ""
-
-ensure-venv:
-	@./scripts/ensure-venv.sh
 
 ensure-latest-pip:
 	$(PIP) install "pip==$(PIP_VERSION)"
@@ -200,7 +198,7 @@ publish:
 	python setup.py sdist bdist_wheel upload
 
 
-.PHONY: develop test build test reset-db clean setup-git node-version-check install-yarn-pkgs install-sentry-dev build-js-po locale update-transifex build-platform-assets test-cli test-js test-styleguide test-python test-snuba test-symbolicator test-acceptance lint lint-python lint-js publish
+.PHONY: develop test build reset-db clean setup-git node-version-check install-yarn-pkgs install-sentry-dev build-js-po locale update-transifex build-platform-assets test-cli test-js test-styleguide test-python test-snuba test-symbolicator test-acceptance lint lint-python lint-js publish
 
 
 ############################
