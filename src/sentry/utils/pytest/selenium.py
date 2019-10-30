@@ -315,11 +315,11 @@ def percy(request):
 def pytest_sessionfinish(session, exitstatus):
     # Always finalize if not running in parallel, otherwise only finalize if
     # successful
-    if hasattr(session, '_percy') and ('PERCY_PARALLEL_TOTAL' not in os.environ):
+    if hasattr(session, "_percy") and ("PERCY_PARALLEL_TOTAL" not in os.environ or not exitstatus):
         session._percy.finalize_build()
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope="function")
 def browser(request, percy, live_server):
     window_size = request.config.getoption("window_size")
     window_width, window_height = list(map(int, window_size.split("x", 1)))
