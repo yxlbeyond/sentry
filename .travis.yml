@@ -115,6 +115,8 @@ base_acceptance: &acceptance_default
     - psql -c 'create database sentry;' -U postgres
 
 
+stages: [test, finish]
+
 # each job in the matrix inherits `env/global` and uses everything above,
 # but custom `services`, `before_install`, `install`, and `before_script` directives
 # may be defined to define and setup individual job environments with more precision.
@@ -124,6 +126,7 @@ matrix:
     # Lint python and javascript together
     - python: 2.7
       name: 'Linter'
+      stage: test
       env: TEST_SUITE=lint
       install:
         - python setup.py install_egg_info
@@ -135,31 +138,39 @@ matrix:
     # Proactive linting on 3.7 during the porting process
     - python: 3.7
       name: 'Linter (Python 3.7)'
+      stage: test
       install: pip install 'sentry-flake8>=0.2.0,<0.3.0'
       # configuration for flake8 can be found in setup.cfg
       script: flake8
 
     - <<: *postgres_default
       name: 'Backend [Postgres] (1/2)'
+      stage: test
       env: TEST_SUITE=postgres DB=postgres TOTAL_TEST_GROUPS=2 TEST_GROUP=0
 
     - <<: *postgres_default
       name: 'Backend [Postgres] (2/2)'
+      stage: test
       env: TEST_SUITE=postgres DB=postgres TOTAL_TEST_GROUPS=2 TEST_GROUP=1
 
     - <<: *postgres_default
       name: 'Backend with migrations [Postgres] (1/2)'
+      stage: test
       env: TEST_SUITE=postgres DB=postgres TOTAL_TEST_GROUPS=2 TEST_GROUP=0 MIGRATIONS_TEST_MIGRATE=1
     - <<: *postgres_default
       name: 'Backend with migrations [Postgres] (2/2)'
+      stage: test
       env: TEST_SUITE=postgres DB=postgres TOTAL_TEST_GROUPS=2 TEST_GROUP=1 MIGRATIONS_TEST_MIGRATE=1
 
     - <<: *acceptance_default
       name: 'Acceptance (1/2)'
-      env: TEST_SUITE=acceptance USE_SNUBA=1 TOTAL_TEST_GROUPS=2 TEST_GROUP=0 PERCY_PARALLEL_NONCE=${TRAVIS_BUILD_ID} PERCY_PARALLEL_TOTAL=2
+      stage: test
+      env: TEST_SUITE=acceptance USE_SNUBA=1 TOTAL_TEST_GROUPS=2 TEST_GROUP=0 PERCY_PARALLEL_TOTAL=-1
+
     - <<: *acceptance_default
       name: 'Acceptance (2/2)'
-      env: TEST_SUITE=acceptance USE_SNUBA=1 TOTAL_TEST_GROUPS=2 TEST_GROUP=1 PERCY_PARALLEL_NONCE=${TRAVIS_BUILD_ID} PERCY_PARALLEL_TOTAL=2
+      stage: test
+      env: TEST_SUITE=acceptance USE_SNUBA=1 TOTAL_TEST_GROUPS=2 TEST_GROUP=1 PERCY_PARALLEL_TOTAL=-1
 
     # allowed to fail
     - <<: *postgres_default
@@ -178,6 +189,7 @@ matrix:
 
     - python: 2.7
       name: 'Frontend'
+      stage: test
       env: TEST_SUITE=js
       before_install:
         - *pip_install
@@ -188,6 +200,7 @@ matrix:
 
     - python: 2.7
       name: 'Command Line'
+      stage: test
       env: TEST_SUITE=cli
       services:
         - postgresql
@@ -200,6 +213,7 @@ matrix:
 
     - python: 2.7
       name: 'Distribution build'
+      stage: test
       env: TEST_SUITE=dist
       before_install:
         - *pip_install
@@ -208,6 +222,7 @@ matrix:
 
     - <<: *postgres_default
       name: 'Symbolicator Integration'
+      stage: test
       env: TEST_SUITE=symbolicator
       before_install:
         - docker run -d --network host --name clickhouse-server --ulimit nofile=262144:262144 yandex/clickhouse-server:19.4
@@ -217,6 +232,7 @@ matrix:
 
     - python: 2.7
       name: 'Snuba Integration'
+      stage: test
       env: TEST_SUITE=snuba USE_SNUBA=1 SENTRY_ZOOKEEPER_HOSTS=localhost:2181 SENTRY_KAFKA_HOSTS=localhost:9092
       services:
         - docker
@@ -238,8 +254,9 @@ matrix:
         - psql -c 'create database sentry;' -U postgres
 
     # Deploy 'storybook' (component & style guide) - allowed to fail
-    - name: 'Storybook Deploy'
-      language: node_js
+    - language: node_js
+      name: 'Storybook Deploy'
+      stage: test
       env: STORYBOOK_BUILD=1
       before_install:
          # Decrypt the credentials we added to the repo using the key we added with the Travis command line tool
@@ -255,6 +272,14 @@ matrix:
       script: bash .travis/deploy-storybook.sh
       after_success: skip
       after_failure: skip
+
+    - language: node_js
+      name: 'Finish Percy Build'
+      stage: finish
+      script: npx percy finalize --all
+      after_success: skip
+      after_failure: skip
+
 
   allow_failures:
     - name: 'Storybook Deploy'

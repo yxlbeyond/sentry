@@ -315,7 +315,7 @@ def percy(request):
 def pytest_sessionfinish(session, exitstatus):
     # Always finalize if not running in parallel, otherwise only finalize if
     # successful
-    if hasattr(session, '_percy') and ('PERCY_PARALLEL_TOTAL' not in os.environ or not exitstatus):
+    if hasattr(session, '_percy') and ('PERCY_PARALLEL_TOTAL' not in os.environ):
         session._percy.finalize_build()
 
 
