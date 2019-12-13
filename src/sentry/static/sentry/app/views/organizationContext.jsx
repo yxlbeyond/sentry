@@ -158,7 +158,8 @@ const OrganizationContext = createReactClass({
     return (
       loading ||
       (!error &&
-        (detailed && (!organization || !organization.projects || !organization.teams)))
+        detailed &&
+        (!organization || !organization.projects || !organization.teams))
     );
   },
 
@@ -200,7 +201,9 @@ const OrganizationContext = createReactClass({
           ({path}) => path && path.includes('/organizations/:orgId/issues/:groupId/')
         )
       ) {
-        GlobalSelectionStore.loadInitialData(organization, this.props.location.query);
+        GlobalSelectionStore.loadInitialData(organization, this.props.location.query, {
+          api: this.props.api,
+        });
       }
     } else if (error) {
       // If user is superuser, open sudo window
