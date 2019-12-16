@@ -21,8 +21,8 @@ class UnpickleEventFromDifferentDjango(TestCase):
         )
 
         target_dj_version = {
-            "1.8": "1.9",
-            "1.9": "1.8",
+            "1.9": "1.10",
+            "1.10": "1.9",
         }
 
         event_from_target_dj = None
