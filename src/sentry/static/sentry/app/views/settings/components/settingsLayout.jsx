@@ -106,7 +106,7 @@ const SettingsHamburgerIcon = styled(Button)`
 
 const MaxWidthContainer = styled('div')`
   display: flex;
-  min-width: 0;
+  max-width: ${p => p.theme.settings.containerWidth};
   flex: 1;
 `;
 
