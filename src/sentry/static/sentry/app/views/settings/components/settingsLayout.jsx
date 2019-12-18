@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'react-emotion';
+
 import space from 'app/styles/space';
 import {slideInLeft, fadeIn} from 'app/styles/animations';
 import Button from 'app/components/button';
+
 import SettingsBreadcrumb from './settingsBreadcrumb';
 import SettingsHeader from './settingsHeader';
 import SettingsSearch from './settingsSearch';
