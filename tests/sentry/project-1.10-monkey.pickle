@@ -1,5 +1,5 @@
-csentry.monkey
-model_unpickle_compat
+csentry.runner.initializer
+__model_unpickle_compat
 p0
 ((S'sentry'
 p1
@@ -100,7 +100,7 @@ p45
 cdatetime
 datetime
 p46
-(S'\x07\xe3\x0c\x11\x15\x10\x10\t[\xca'
+(S'\x07\xe3\x0c\x12\x124!\x0c\xbb\x94'
 p47
 cpytz
 _UTC
@@ -212,7 +212,7 @@ aS'disable_new_visibility_features'
 p85
 asbsg45
 g46
-(S'\x07\xe3\x0c\x11\x15\x10\x10\t):'
+(S'\x07\xe3\x0c\x12\x124!\x0c\x93\xeb'
 p86
 g49
 tp87

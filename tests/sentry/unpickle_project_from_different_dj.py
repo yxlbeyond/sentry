@@ -1,7 +1,5 @@
 import pickle
 
-import django
-
 from sentry.testutils import TestCase
 
 
@@ -10,7 +8,7 @@ class UnpickleProjectFromDifferentDjango(TestCase):
         for file in [
             "project-1.9-monkey.pickle",
             "project-1.9-nomonkey.pickle",
-            "project-1.10.pickle",
+            "project-1.10-monkey.pickle",
         ]:
 
             with open(file, "rb") as f:
