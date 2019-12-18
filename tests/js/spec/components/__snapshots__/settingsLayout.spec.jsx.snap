@@ -4,8 +4,8 @@ exports[`SettingsLayout renders 1`] = `
 <Fragment>
   <SettingsColumn>
     <SettingsHeader>
-      <StyledBreadcrumbWrapper>
-        <SettingsHamburgerIcon
+      <BreadcrumbWrapper>
+        <NavMenuToggle
           align="center"
           disabled={false}
           icon="icon-activity"
@@ -17,7 +17,7 @@ exports[`SettingsLayout renders 1`] = `
           route={Object {}}
           routes={Array []}
         />
-      </StyledBreadcrumbWrapper>
+      </BreadcrumbWrapper>
       <StyledSettingsSearch
         router={
           Object {
