@@ -386,17 +386,7 @@ from django.core.urlresolvers import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy("sentry-login-redirect")
 LOGIN_URL = reverse_lazy("sentry-login")
 
-AUTHENTICATION_BACKENDS = (
-    "sentry.utils.auth.EmailAuthBackend",
-    # TODO(dcramer): we can't remove these until we rewrite more of social auth
-    "social_auth.backends.github.GithubBackend",
-    "social_auth.backends.github_apps.GithubAppsBackend",
-    "social_auth.backends.bitbucket.BitbucketBackend",
-    "social_auth.backends.trello.TrelloBackend",
-    "social_auth.backends.asana.AsanaBackend",
-    "social_auth.backends.slack.SlackBackend",
-    "social_auth.backends.visualstudio.VisualStudioBackend",
-)
+AUTHENTICATION_BACKENDS = ("sentry.utils.auth.EmailAuthBackend",)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
