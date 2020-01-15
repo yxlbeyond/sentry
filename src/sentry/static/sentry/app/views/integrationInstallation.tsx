@@ -1,7 +1,9 @@
+import {RouteComponentProps} from 'react-router/lib/Router';
 import React from 'react';
 import styled from '@emotion/styled';
-import {RouteComponentProps} from 'react-router/lib/Router';
 
+import {Organization, IntegrationProvider, Integration} from 'app/types';
+import {addErrorMessage} from 'app/actionCreators/indicator';
 import {t, tct} from 'app/locale';
 import AddIntegration from 'app/views/organizationIntegrations/addIntegration';
 import Alert from 'app/components/alert';
@@ -9,10 +11,8 @@ import AsyncView from 'app/views/asyncView';
 import Button from 'app/components/button';
 import Field from 'app/views/settings/components/forms/field';
 import HookStore from 'app/stores/hookStore';
-import IndicatorStore from 'app/stores/indicatorStore';
 import NarrowLayout from 'app/components/narrowLayout';
 import SelectControl from 'app/components/forms/selectControl';
-import {Organization, IntegrationProvider, Integration} from 'app/types';
 
 type Props = RouteComponentProps<{providerId: string; installationId: string}, {}>;
 
@@ -60,7 +60,7 @@ export default class IntegrationInstallation extends AsyncView<Props, State> {
       success: (organization: Organization) => this.setState({organization, reloading}),
       error: () => {
         this.setState({reloading});
-        IndicatorStore.addError(t('Failed to retrieve organization details'));
+        addErrorMessage(t('Failed to retrieve organization details'));
       },
     });
 
@@ -69,7 +69,7 @@ export default class IntegrationInstallation extends AsyncView<Props, State> {
         this.setState({providers: providers.providers, reloading}),
       error: () => {
         this.setState({reloading});
-        IndicatorStore.addError(t('Failed to retrieve integration provider details'));
+        addErrorMessage(t('Failed to retrieve integration provider details'));
       },
     });
   };
