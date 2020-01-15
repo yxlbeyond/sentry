@@ -388,7 +388,6 @@ urlpatterns = [
         ),
     ),
     # Api Data
-    url(r"^data-export/$", DataExportEndpoint.as_view(), name="sentry-api-0-data-export"),
     url(r"^assistant/$", AssistantEndpoint.as_view(), name="sentry-api-0-assistant"),
     url(
         r"^api-applications/$",
@@ -603,6 +602,12 @@ urlpatterns = [
                     r"^(?P<organization_slug>[^\/]+)/alert-rules/(?P<alert_rule_id>[^\/]+)/triggers/(?P<alert_rule_trigger_id>[^\/]+)/actions/$",
                     OrganizationAlertRuleTriggerActionIndexEndpoint.as_view(),
                     name="sentry-api-0-organization-alert-rules-trigger-actions",
+                ),
+                # Data Export
+                url(
+                    r"^(?P<organization_slug>[^\/]+)/data-export/(?P<data_tag>[^\/]+)/$",
+                    DataExportEndpoint.as_view(),
+                    name="sentry-api-0-organization-data-export",
                 ),
                 # Incidents
                 url(

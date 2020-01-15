@@ -934,7 +934,7 @@ function routes() {
       <Route
         path="/organizations/:orgId/data-export/:dataTag"
         componentPromise={() =>
-          import(/* webpackChunkName: "DataDownloadView" */ 'app/views/dataExport/dataDownload.jsx')
+          import(/* webpackChunkName: "DataDownloadView" */ 'app/views/dataExport/dataDownload')
         }
         component={errorHandler(LazyLoad)}
       />
