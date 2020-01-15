@@ -4,7 +4,13 @@ from __future__ import absolute_import
 
 
 import pytest
-import mock
+
+try:
+    # TODO: remove when we drop Python 2.7 compat
+    import mock
+except ImportError:
+    from unittest import mock
+
 from django.conf import settings
 
 from sentry import eventstore

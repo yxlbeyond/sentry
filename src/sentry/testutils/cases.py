@@ -27,7 +27,13 @@ import pytest
 import requests
 import six
 import types
-import mock
+
+try:
+    # TODO: remove when we drop Python 2.7 compat
+    import mock
+except ImportError:
+    from unittest import mock
+
 
 from click.testing import CliRunner
 from datetime import datetime

@@ -2,7 +2,13 @@
 
 from __future__ import absolute_import
 
-import mock
+
+try:
+    # TODO: remove when we drop Python 2.7 compat
+    import mock
+except ImportError:
+    from unittest import mock
+
 import six
 
 from datetime import timedelta

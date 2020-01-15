@@ -1,6 +1,12 @@
 from __future__ import absolute_import, print_function
 
-import mock
+
+try:
+    # TODO: remove when we drop Python 2.7 compat
+    import mock
+except ImportError:
+    from unittest import mock
+
 
 from sentry.models import Environment
 from sentry.testutils import APITestCase, SnubaTestCase

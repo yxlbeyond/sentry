@@ -1,7 +1,13 @@
 from __future__ import absolute_import, print_function
 
 import pytest
-import mock
+
+try:
+    # TODO: remove when we drop Python 2.7 compat
+    import mock
+except ImportError:
+    from unittest import mock
+
 
 from sentry.auth.providers.saml2.provider import SAML2Provider, Attributes
 

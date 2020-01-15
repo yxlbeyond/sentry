@@ -3,7 +3,13 @@ from __future__ import absolute_import
 import six
 import pytest
 import base64
-import mock
+
+try:
+    # TODO: remove when we drop Python 2.7 compat
+    import mock
+except ImportError:
+    from unittest import mock
+
 from exam import fixture
 from six.moves.urllib.parse import urlencode, urlparse, parse_qs
 
